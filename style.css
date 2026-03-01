@@ -162,6 +162,9 @@ h4 {
 .main-nav {
   display: none;
 }
+.site-header.nav-open .main-nav {
+  display: block;
+}
 
 .main-nav ul {
   list-style: none;
@@ -790,5 +793,11 @@ h4 {
   .reveal {
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .floating-whatsapp {
+    bottom: 75px;   /* pushes it above mobile call button */
+    z-index: 9999;
   }
 }
