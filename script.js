@@ -67,3 +67,34 @@ const yearSpan = document.getElementById("year");
 if (yearSpan) {
   yearSpan.textContent = String(new Date().getFullYear());
 }
+
+// FAQ accordion (one open at a time)
+const faqItems = Array.from(document.querySelectorAll(".faq-item"));
+
+if (faqItems.length > 0) {
+  faqItems.forEach((item) => {
+    const toggle = item.querySelector(".faq-toggle");
+    const answer = item.querySelector(".faq-answer");
+
+    if (!toggle || !answer) return;
+
+    toggle.addEventListener("click", () => {
+      const isOpen = item.classList.contains("is-open");
+
+      // Close all items
+      faqItems.forEach((otherItem) => {
+        const otherToggle = otherItem.querySelector(".faq-toggle");
+        if (!otherToggle) return;
+
+        otherItem.classList.remove("is-open");
+        otherToggle.setAttribute("aria-expanded", "false");
+      });
+
+      // If the clicked one was not open, open it
+      if (!isOpen) {
+        item.classList.add("is-open");
+        toggle.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+}
