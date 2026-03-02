@@ -97,10 +97,25 @@ h4 {
 
 .section-header h2 {
   font-size: 1.7rem;
+  letter-spacing: -0.01em;
 }
 
 .section-header p {
   font-size: 0.96rem;
+}
+
+.section-mini-cta {
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+  margin-top: -0.4rem;
+}
+
+.section-mini-cta a {
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
 
 /* Header */
@@ -324,14 +339,34 @@ h4 {
 
 .hero-cta {
   display: flex;
-  align-items: center;   /* 🔥 This aligns them perfectly */
+  align-items: center;
+  justify-content: flex-start;
   gap: 15px;
-  flex-wrap: wrap;       /* makes responsive on mobile */
+  flex-wrap: wrap;
 }
 
 .hero-note {
   font-size: 0.85rem;
   margin-top: 0.6rem;
+}
+
+.hero-rating {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.04);
+  font-size: 0.78rem;
+  color: var(--color-text);
+}
+
+.hero-rating-score {
+  font-weight: 600;
+}
+
+.hero-rating-text {
+  color: var(--color-text-muted);
 }
 
 .hero-media {
@@ -479,7 +514,6 @@ h4 {
   color: var(--color-text-muted);
 }
 
-
 /* Overall Rating Box */
 .overall-rating {
   text-align: center;
@@ -498,6 +532,114 @@ h4 {
 .overall-rating p {
   color: var(--color-text-muted);
   margin-bottom: 1rem;
+}
+
+/* FAQ */
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.faq-item {
+  background-color: #f6f6f6;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 0, 0, 0.035);
+  box-shadow: var(--shadow-subtle);
+  transition: background-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.faq-toggle {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  color: var(--color-text);
+}
+
+.faq-question {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.faq-chevron {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.faq-chevron::before,
+.faq-chevron::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  border-radius: 999px;
+  background-color: #222222;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.faq-chevron::before {
+  width: 8px;
+  height: 1.5px;
+  transform: none;
+}
+
+.faq-chevron::after {
+  width: 1.5px;
+  height: 8px;
+  transform: none;
+}
+
+.faq-item.is-open .faq-chevron {
+  background-color: #111111;
+  border-color: #111111;
+}
+
+.faq-item.is-open .faq-chevron::before,
+.faq-item.is-open .faq-chevron::after {
+  background-color: #ffffff;
+}
+
+.faq-answer {
+  padding: 0 1.2rem 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-2px);
+  transition: max-height 220ms ease-out, opacity 220ms ease-out,
+    transform 220ms ease-out;
+}
+
+.faq-item.is-open .faq-answer {
+  max-height: 260px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.faq-item:hover {
+  background-color: #f2f2f2;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
 }
 
 /* Better Grid for Desktop */
@@ -536,6 +678,28 @@ h4 {
 
 .contact-item p {
   font-size: 0.88rem;
+}
+
+.areas-served {
+  margin-top: 0.4rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.areas-label {
+  font-weight: 500;
+  margin-right: 0.35rem;
+  color: var(--color-text);
+}
+
+.areas-list {
+  letter-spacing: 0.01em;
+}
+
+.section-alt-soft {
+  background-color: #f8f6f4;
 }
 
 .contact-cta {
